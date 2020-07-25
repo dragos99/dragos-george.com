@@ -1,0 +1,16 @@
+{
+  "name": "dragosgeorge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Dragos-George Feleaga",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "helmet": "^3.23.3"
+  }
+}
