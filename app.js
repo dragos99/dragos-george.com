@@ -13,4 +13,8 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+app.get('/showcase/smarthouse', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public/showcase/smarthouse/index.html'));
+});
+
 app.listen(port, () => console.log(`Server listening on port ${port}!`));

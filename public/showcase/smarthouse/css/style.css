@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Dosis', sans-serif;
+}
+
+#loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #1abc9c;
+    z-index: 1000;
+    transition: opacity 0.5s;
+}
+
+#loading.hide {
+    opacity: 0;
+}
+
+#bg {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+canvas {
+    z-index: 0;
+}
+
+#sun {
+    width: 200px;
+    height: 200px;
+    top: 3%;
+    left: 2%;
+    z-index: 1;
+}
+
+.cloud {
+    position: absolute;
+    z-index: 2;
+}
+
+#ground {
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 5;
+}
+
+#pillar {
+    bottom: 15%;
+    left: 0%;
+    z-index: 3;
+}
+
+#house {
+    bottom: 15%;
+    right: 5%;
+    z-index: 3;
+}
+
+#ac {
+    bottom: 47%;
+    right: 13%;
+    z-index: 4;
+}
+
+.window {
+    bottom: 25%;
+    z-index: 4;
+}
+
+#left-window {
+    left: 22%;
+}
+
+#right-window {
+    right: 22%;
+}
+
+#ac.on {
+    animation: spin 0.8s linear infinite;
+}
+
+#horn {
+    bottom: 67%;
+    right: 13%;
+    z-index: 4;
+}
+
+#smoke {
+    position: absolute;
+    left: 49%;
+    bottom: 100%;
+    z-index: -1;
+}
+
+#solarPanel {
+    bottom: 70%;
+    left: 50%;
+    transform: translate(-44%);
+}
+
+#energy {
+    position: absolute;
+    top: 40%;
+    left: 16%;
+    color: #123D68;
+    font-size: 29px;
+}
+
+
+/* Cpanel */
+.panel {
+    position: absolute;
+    background: rgba(0,0,0,.25);
+    padding: 10px;
+    width: 55px;
+    height: 70px;
+    z-index: 99;
+}
+
+.panel.on {
+    width: 160px;
+    height: 160px;
+}
+
+#out-panel {
+    top: 52%;
+    left: 0;
+    border-radius: 0 10px 10px 0;
+}
+
+#house-panel {
+    top: 50%;
+    right: 92%;
+    border-radius: 10px 0 0 10px;
+}
+
+#house-panel.on {
+    height: 180px;
+}
+
+#consumption-panel, #gas-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 30px;
+    top: 64%;
+    right: 92%;
+    border-radius: 10px 0 0 10px;
+}
+
+#gas-panel {
+    top: 78%;
+}
+
+#consumption-panel.on, #gas-panel.on {
+    width: 100px;
+    height: 100px;
+}
+
+#minus-temp-btn, #plus-temp-btn {
+    position: absolute;
+    bottom: 20px;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+#minus-temp-btn {
+    left: 13px;
+}
+
+#plus-temp-btn {
+    right: 13px;
+}
+
+#placard {
+    bottom: 15%;
+    right: 45%;
+    z-index: 4;
+}
+
+#map {
+    position: absolute;
+    top: 10px;
+    width: 95%;
+    height: 220px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+
+.obj {
+    position: absolute;
+}
+
+.ctrl {
+    cursor: pointer;
+}
+
+@keyframes spin {
+    100% { transform: rotateZ(-360deg); }
+}

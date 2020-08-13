@@ -1,0 +1,168 @@
+<html>
+<head>
+    <title> Smart House </title>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/clouds.css">
+    <link rel="stylesheet" type="text/css" href="css/smoke.css">
+    <link rel="stylesheet" type="text/css" href="css/spinner.css">
+    <link rel="stylesheet" type="text/css" href="css/temp.css">
+</head>
+<body ng-app="app" ng-controller="MainCtrl as vm">
+
+    <audio autoplay loop>
+      <source src="ambient.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <div id="loading" ng-if="!vm.ready">
+        <div class="spinner">
+            <p> Generating world </p>
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+
+    <!-- Background -->
+    <img id="bg" class="obj" ng-src="img/{{vm.state}}/bg.png">
+
+    <!-- Sun / Moon -->
+    <img id="sun" class="obj ctrl" ng-src="img/{{vm.state}}/sun.png" ng-click="vm.changeState()">
+
+    <!-- Clouds -->
+	<div class="cloud x1 ctrl" ng-click="vm.changeWeather()"></div>
+	<div class="cloud x2 ctrl" ng-click="vm.changeWeather()"></div>
+	<div class="cloud x3 ctrl" ng-click="vm.changeWeather()"></div>
+	<div class="cloud x4 ctrl" ng-click="vm.changeWeather()"></div>
+	<div class="cloud x5 ctrl" ng-click="vm.changeWeather()"></div>
+
+    <!-- Rain -->
+    <canvas id="canvas" style="position : absolute; top : 0px; left : 0px;"></canvas>
+
+    <!-- Ground -->
+    <img id="ground" class="obj" ng-src="img/{{vm.state}}/ground.png">
+
+    <!-- Pillar -->
+    <img id="pillar" class="obj" ng-src="img/{{vm.state}}/pillar.png">
+
+    <!-- House -->
+    <div id="house" class="obj">
+        <img ng-src="img/{{vm.state}}/house.png">
+
+        <!-- AC -->
+        <img id="ac" class="obj ctrl {{vm.ac ? 'on' : 'off'}}" ng-src="img/{{vm.state}}/ac.png" ng-click="vm.modifyTemp(-1)">
+
+        <!-- Horn -->
+        <div id="horn" class="obj ctrl">
+            <img class="ctrl" ng-src="img/{{vm.state}}/horn.png" ng-click="vm.modifyTemp(1)">
+            <div id="smoke" ng-show="vm.heat">
+              <span class="s0"></span>
+              <span class="s1"></span>
+              <span class="s2"></span>
+              <span class="s3"></span>
+              <span class="s4"></span>
+              <span class="s5"></span>
+              <span class="s6"></span>
+              <span class="s7"></span>
+              <span class="s8"></span>
+              <span class="s9"></span>
+            </div>
+        </div>
+
+        <!-- Solar Panel -->
+        <div id="solarPanel" class="obj">
+            <img ng-src="img/{{vm.state}}/solarPanel.png">
+            <h3 id="energy">{{vm.electricityGenerated}} Wh</h3>
+        </div>
+
+        <!-- Windows -->
+        <img id="left-window" class="obj ctrl window" ng-src="img/{{vm.state}}/window_{{vm.light ? 'on' : 'off'}}.png" ng-click="vm.switchLighting()">
+        <img id="right-window" class="obj ctrl window" ng-src="img/{{vm.state}}/window_{{vm.light ? 'on' : 'off'}}.png" ng-click="vm.switchLighting()">
+
+        <!-- House temp panel -->
+        <div id="house-panel" ng-mouseenter="vm.tempIn = true" ng-mouseleave="vm.tempIn = false" class="{{vm.tempIn ? 'panel on' : 'panel off'}}">
+            <img src="img/thermometer.png" margin="15px" ng-show="!vm.tempIn">
+            <!-- House temp -->
+            <div class="container" ng-show="vm.tempIn">
+                <div class="de">
+                    <div class="den">
+                      <div class="dene">
+                        <div class="denem">
+                          <div class="deneme">
+                            {{vm.insideTemp}}<span>.{{vm.insideTempDecimal}}</span><strong>&deg;</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <img id="minus-temp-btn" src="img/minus.svg" ng-show="vm.tempIn" ng-click="vm.modifyTemp(-1)">
+            <img id="plus-temp-btn" src="img/plus.svg" ng-show="vm.tempIn" ng-click="vm.modifyTemp(1)">
+        </div>
+
+        <!-- House consumption panel -->
+        <div id="consumption-panel" ng-mouseenter="vm.cons = true" ng-mouseleave="vm.cons = false" class="{{vm.cons ? 'panel on' : 'panel off'}}" ng-show="!vm.tempIn">
+            <img src="img/flash.png" margin="15px" ng-show="!vm.cons">
+            <div ng-show="vm.cons">{{vm.electricity}} KWh</div>
+        </div>
+
+        <!-- House gas panel -->
+        <div id="gas-panel" ng-mouseenter="vm.gasp = true" ng-mouseleave="vm.gasp = false" class="{{vm.gasp ? 'panel on' : 'panel off'}}" ng-show="!vm.tempIn && !vm.cons">
+            <img src="img/gas.png" margin="15px" ng-show="!vm.gasp">
+            <div ng-show="vm.gasp">{{vm.gas | number : 1}} m<sup>3</sup></div>
+        </div>
+
+    </div>
+
+
+    <!-- Out temp panel -->
+    <div id="out-panel" ng-mouseenter="vm.tempOut = true" ng-mouseleave="vm.tempOut = false" class="{{vm.tempOut ? 'panel on' : 'panel off'}}">
+        <img src="img/thermometer.png" margin="15px" ng-show="!vm.tempOut">
+        <!-- Outside temp -->
+        <div class="container" ng-show="vm.tempOut">
+            <div class="de">
+                <div class="den">
+                  <div class="dene">
+                    <div class="denem">
+                      <div class="deneme">
+                        {{vm.weather.temp}}<span>.{{vm.weather.tempDecimal}}</span><strong>&deg;</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map -->
+    <div id="placard" class="obj">
+        <img  ng-src="img/{{vm.state}}/placard.png">
+        <div id="map"></div>
+    </div>
+
+    <script>
+      var map;
+      function initMap() {
+          setTimeout(() => {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: window.lat, lng: window.lng},
+                zoom: 13
+              });
+              var marker = new google.maps.Marker({
+          position: {lat: window.lat, lng: window.lng},
+          map: map,
+          title: 'House'
+        });
+          }, 1000);
+
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGvBv3vwWYwov3tD4KjA8DqR_rZBa42iQ&callback=initMap"
+   async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/rain.js"></script>
+</body>
+</html>

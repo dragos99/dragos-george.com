@@ -1,6 +1,6 @@
 'use strict';
 
-const navBarHeight = 70;
+const navBarHeight = 75;
 
 function init() {
     const intro = document.getElementById('intro');
@@ -9,26 +9,8 @@ function init() {
     const navBar = document.querySelector('nav');
     const navLinks = document.getElementsByClassName('nav-item');
 
-    // intro: parallax effect
-    document.addEventListener('scroll', (e) => {
-        const scroll = -window.pageYOffset / 3;
-        if (scroll <= window.innerHeight / 3) {
-            intro.style.transform = `translateY(${scroll}px`;
-            title.style.transform = `translateY(${window.pageYOffset / 10}px`
-            particles.style.transform = `translateY(${window.pageYOffset / 10}px`
-        }
-    });
-
-    // navbar: change background
-    window.addEventListener('scroll', (e) => {
-        const start = window.innerHeight - navBarHeight * 4;
-        const end = window.innerHeight - navBarHeight;
-        let opacity = (window.pageYOffset - start) / (end - start);
-        if (opacity <= 1) {
-            if (opacity < 0.1) opacity = 0.1;
-            navBar.style.background = `rgba(0,0,0,${opacity}`;
-        }
-    });
+    document.addEventListener('scroll', updateIntro);
+    window.addEventListener('scroll', updateNavBar);
 
     // navLinks: go to
     for (const navLink of navLinks) {
@@ -38,6 +20,28 @@ function init() {
             window.scrollTo({ top: scroll, behavior: 'smooth' });
         });
     }
+
+    // navbar: change background
+    function updateNavBar() {
+        const start = window.innerHeight - navBarHeight * 4;
+        const end = window.innerHeight - navBarHeight;
+        let opacity = (window.pageYOffset - start) / (end - start);
+        if (opacity < 0.1) opacity = 0;
+        navBar.style.background = `rgba(20,12,10,${opacity}`;
+    }
+
+    // intro: parallax effect
+    function updateIntro() {
+        const scroll = -window.pageYOffset / 3;
+        if (scroll <= window.innerHeight / 3) {
+            intro.style.transform = `translateY(${scroll}px`;
+            title.style.transform = `translateY(${window.pageYOffset / 10}px`
+            particles.style.transform = `translateY(${window.pageYOffset / 10}px`
+        }
+    }
+
+    updateNavBar();
+    updateIntro();
 
     // init particles
     particlesJS('particles', {
