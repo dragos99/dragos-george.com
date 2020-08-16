@@ -1,33 +1,43 @@
 'use strict';
 
-const navBarHeight = 75;
+const headerHeight = 75;
 
 function init() {
+    const header = document.querySelector('header');
+    const logo = document.getElementById('logo');
     const intro = document.getElementById('intro');
     const title = document.getElementById('title');
     const particles = document.getElementById('particles');
-    const navBar = document.querySelector('nav');
     const navLinks = document.getElementsByClassName('nav-item');
 
-    document.addEventListener('scroll', updateIntro);
-    window.addEventListener('scroll', updateNavBar);
+    window.addEventListener('scroll', updateIntro);
+    window.addEventListener('scroll', updateHeader);
 
     // navLinks: go to
     for (const navLink of navLinks) {
         navLink.addEventListener('click', (e) => {
             const goToElement = navLink.getAttribute('goTo');
-            const scroll = document.querySelector(goToElement).offsetTop - navBarHeight;
+            const scroll = document.querySelector(goToElement).offsetTop - headerHeight;
             window.scrollTo({ top: scroll, behavior: 'smooth' });
         });
     }
 
     // navbar: change background
-    function updateNavBar() {
-        const start = window.innerHeight - navBarHeight * 4;
-        const end = window.innerHeight - navBarHeight;
-        let opacity = (window.pageYOffset - start) / (end - start);
-        if (opacity < 0.1) opacity = 0;
-        navBar.style.background = `rgba(20,12,10,${opacity}`;
+    function updateHeader() {
+        const start = headerHeight * 2;
+        const end = window.innerHeight - headerHeight;
+        const progress = (window.pageYOffset - start) / (end - start);
+        header.style.background = `rgba(20,12,10,${progress}`;
+
+        if (progress >= 0.75) {
+            if (!logo.className.includes('fadeIn')) {
+                logo.className = 'fadeIn';
+            }
+        } else {
+            if (logo.className.includes('fadeIn')) {
+                logo.className = 'fadeOut';
+            }
+        }
     }
 
     // intro: parallax effect
@@ -40,7 +50,7 @@ function init() {
         }
     }
 
-    updateNavBar();
+    updateHeader();
     updateIntro();
 
     // init particles

@@ -51,31 +51,39 @@ canvas {
 #ground {
     bottom: 0;
     width: 100%;
-    height: 150px;
+    height: 15vh;
     z-index: 5;
 }
 
 #pillar {
-    bottom: 15%;
+    height: 70vh;
+    bottom: 15vh;
     left: 0%;
     z-index: 3;
+    pointer-events: none;
 }
 
 #house {
-    bottom: 15%;
-    right: 5%;
-    z-index: 3;
+    bottom: 15vh;
+    right: 5vw;
+    z-index: 5;
+}
+
+#house-img {
+    width: 60vmin;
 }
 
 #ac {
     bottom: 47%;
     right: 13%;
     z-index: 4;
+    width: 5.5vmin;
 }
 
 .window {
-    bottom: 25%;
+    bottom: 20%;
     z-index: 4;
+    width: 13vmin;
 }
 
 #left-window {
@@ -96,6 +104,10 @@ canvas {
     z-index: 4;
 }
 
+#horn > img {
+    width: 4vmin;
+}
+
 #smoke {
     position: absolute;
     left: 49%;
@@ -104,17 +116,22 @@ canvas {
 }
 
 #solarPanel {
-    bottom: 70%;
+    bottom: 65%;
     left: 50%;
     transform: translate(-44%);
 }
 
+#solarPanel > img {
+    width: 15vmin;
+}
+
 #energy {
     position: absolute;
-    top: 40%;
-    left: 16%;
+    top: 39%;
+    left: 45%;
+    transform: translateX(-50%);
     color: #123D68;
-    font-size: 29px;
+    font-size: 3.3vmin;
 }
 
 
@@ -122,10 +139,14 @@ canvas {
 .panel {
     position: absolute;
     background: rgba(0,0,0,.25);
-    padding: 10px;
-    width: 55px;
-    height: 70px;
+    padding: 2vmin;
+    width: 7vmin;
+    height: 7vmin;
     z-index: 99;
+}
+
+.panel-img {
+    width: 80%;
 }
 
 .panel.on {
@@ -146,7 +167,7 @@ canvas {
 }
 
 #house-panel.on {
-    height: 180px;
+    height: 10vmin;
 }
 
 #consumption-panel, #gas-panel {
@@ -154,7 +175,7 @@ canvas {
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-size: 30px;
+    font-size: 4vmin;
     top: 64%;
     right: 92%;
     border-radius: 10px 0 0 10px;
@@ -186,20 +207,20 @@ canvas {
 }
 
 #placard {
-    bottom: 15%;
-    right: 45%;
+    bottom: 15vh;
+    right: 40vw;
     z-index: 4;
+    width: 45vmin;
 }
 
 #map {
     position: absolute;
-    top: 10px;
+    top: 3%;
     width: 95%;
-    height: 220px;
+    height: 66%;
     left: 50%;
     transform: translate(-50%);
 }
-
 
 .obj {
     position: absolute;

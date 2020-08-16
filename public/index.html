@@ -7,21 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Aldrich&subset=latin" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/intro.css">
+    <link rel="stylesheet" href="/css/projects.css">
     <title>Dragoș-George Feleagă</title>
 </head>
 
 <body>
-    <nav>
-        <div id="nav-container">
+    <header class="">
+        <div id="logo">
+            <span class="">Dragos-George Feleaga</span>
+        </div>
+        <nav class="">
             <div class="nav-item" goTo="#projects">Projects</div>
             <div class="nav-item">Skills</div>
             <div class="nav-item">Résumé</div>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
     <div id="intro">
         <div id="particles"></div>
@@ -39,7 +44,7 @@
                 <a href="https://trutabgen.com">
                     <h2 class="project-title">TruTabGen</h2>
 
-                    <div class="img-hover-zoom">
+                    <div class="img-container">
                         <img src="img/trutabgen.jpg" />
                     </div>
                 </a>
@@ -55,7 +60,7 @@
             <div class="project-card">
                 <a href="/showcase/phase">
                     <h2 class="project-title">Phase Universe</h2>
-                    <div class="img-hover-zoom">
+                    <div class="img-container">
                         <img src="img/phase.jpg" />
                     </div>
                 </a>
@@ -70,7 +75,7 @@
             <div class="project-card">
                 <a href="/showcase/tictacgo">
                     <h2 class="project-title">TicTacGo</h2>
-                    <div class="img-hover-zoom">
+                    <div class="img-container">
                         <img src="img/tictacgo.jpg" />
                     </div>
                 </a>
@@ -86,7 +91,7 @@
             <div class="project-card">
                 <a href="https://play.google.com/store/apps/details?id=com.ad.truthtable">
                     <h2 class="project-title">TruTabGen App</h2>
-                    <div class="img-hover-zoom">
+                    <div class="img-container">
                         <img src="img/trutabgen-app.jpg" />
                     </div>
                 </a>
@@ -98,17 +103,17 @@
             </div>
 
             <div class="project-card">
-                <a href="https://play.google.com/store/apps/details?id=com.ad.truthtable">
+                <a href="/showcase/smarthouse">
                     <h2 class="project-title">Smart House</h2>
-                    <div class="img-hover-zoom">
+                    <div class="img-container">
                         <img src="img/smarthouse.jpg" />
                     </div>
                 </a>
-                <p>Interactive view in which you control the sun, the rain, and the temperature in your house.</p>
+                <p>Interactive view in which you control the sun, the rain, and the inside temperature.</p>
                 <div class="tech">
                     <span class="tech-item">HTML</span>
                     <span class="tech-item">AngularJs</span>
-                    <span class="tech-item">External APIs</span>
+                    <span class="tech-item">3rd party APIs</span>
                 </div>
             </div>
         </div>

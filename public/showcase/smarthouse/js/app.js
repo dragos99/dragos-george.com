@@ -34,18 +34,13 @@ function MainController($http, $timeout, $interval, $log) {
     }
 
     this.getData = function () {
-        $http.get('https://ipinfo.io/ip').then((res) => {
-            this.ip = res.data;
-            return fetch('http://ip-api.com/json/' + this.ip);
-        })
-            .then((res) => res.json())
+        $http.get('https://ipapi.co/json')
             .then((data) => {
-                this.coord = { latitude: data.lat, longitude: data.lon };
+                this.coord = data.data;
                 window.lat = this.coord.latitude;
                 window.lng = this.coord.longitude;
-                console.log(this.coord, window.lat);
 
-                var url = 'http://api.openweathermap.org/data/2.5/weather';
+                var url = 'https://api.openweathermap.org/data/2.5/weather';
                 url += '?lat=' + Math.round(this.coord.latitude);
                 url += '&lon=' + Math.round(this.coord.longitude);
                 url += '&APPID=3d9fd6b4a8b9c90e12f1f4311c638540';
@@ -85,17 +80,17 @@ function MainController($http, $timeout, $interval, $log) {
             document.getElementById('loading').classList.add('hide');
             $timeout(() => {
                 this.ready = true;
-            }, delay);
-        }, delay);
+            }, 300);
+        }, 500);
     }
 
     this.getData();
 
     $interval(() => {
         var energyForLightning = 1;
-        var energyGeneratedPerInterval = 2;
+        var energyGeneratedPerInterval = 1;
         var gasConsumption = 0.1;
-        var energyConsumption = 1;
+        var energyConsumption = 3;
 
         var outside = ((this.weather.temp * 10) + this.weather.tempDecimal) / 10;
         var inside = ((this.insideTemp * 10) + this.insideTempDecimal) / 10;
@@ -126,6 +121,7 @@ function MainController($http, $timeout, $interval, $log) {
         }
 
         this.electricity = Math.round(this.electricity);
+        this.electricityGenerated = Math.round(this.electricityGenerated * 10) / 10;
 
     }, 1000);
 
