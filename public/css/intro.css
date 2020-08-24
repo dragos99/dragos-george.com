@@ -21,8 +21,10 @@
 }
 
 #title {
+    display: none;
     text-align: center;
     margin-top: -5vh;
+    color: white;
 }
 
 #name, #career {
@@ -32,12 +34,11 @@
 
 #name {
     font-size: 48px;
-    animation-delay: 0.3s;
 }
 
 #career {
     font-size: 32px;
-    animation-delay: 1s;
+    animation-delay: 0.7s;
 }
 
 @media only screen and (max-width: 528px) {

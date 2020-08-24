@@ -13,21 +13,31 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/intro.css">
     <link rel="stylesheet" href="/css/projects.css">
+    <link rel="stylesheet" href="/css/skills.css">
+
     <title>Dragoș-George Feleagă</title>
 </head>
 
 <body>
+    <div id="preloader">
+        <div class="loader">
+            <div class="dot-windmill"></div>
+        </div>
+    </div>
+
+    <!-------------------------- HEADER -------------------------->
     <header class="">
         <div id="logo">
-            <span class="">Dragos-George Feleaga</span>
+            <span class="nav-item" goTo="#intro">Dragos-George Feleaga</span>
         </div>
-        <nav class="">
+        <nav>
             <div class="nav-item" goTo="#projects">Projects</div>
-            <div class="nav-item">Skills</div>
-            <div class="nav-item">Résumé</div>
+            <div class="nav-item" goTo="#skills">Skills</div>
+            <div class="nav-item" goTo="#resume">Résumé</div>
         </nav>
     </header>
 
+    <!-------------------------- INTRO -------------------------->
     <div id="intro">
         <div id="particles"></div>
         <div id="title">
@@ -36,88 +46,172 @@
         </div>
     </div>
 
-    <section id="projects">
-        <h1 class="section-title">PRoJECTS</h1>
-        <div id="showcase">
-
-            <div class="project-card">
-                <a href="https://trutabgen.com">
-                    <h2 class="project-title">TruTabGen</h2>
-
-                    <div class="img-container">
-                        <img src="img/trutabgen.jpg" />
+    <div id="content">
+        <!-------------------------- PROJECTS-------------------------->
+        <section id="projects">
+            <h1 class="section-title">PRoJECTS</h1>
+            <div class="container">
+                <div class="project-card">
+                    <a href="https://trutabgen.com">
+                        <h2 class="project-title">TruTabGen</h2>
+                        <div class="img-container">
+                            <img src="img/trutabgen.jpg" />
+                        </div>
+                    </a>
+                    <p>Online truth table generator for logical formulas.</p>
+                    <div class="tech">
+                        <span class="tech-item">HTML</span>
+                        <span class="tech-item">CSS</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">React</span>
                     </div>
-                </a>
-                <p>Online truth table generator for logical formulas.</p>
-                <div class="tech">
-                    <span class="tech-item">HTML</span>
-                    <span class="tech-item">CSS</span>
-                    <span class="tech-item">JavaScript</span>
-                    <span class="tech-item">React</span>
+                </div>
+
+                <div class="project-card">
+                    <a href="/showcase/phase">
+                        <h2 class="project-title">Phase Universe</h2>
+                        <div class="img-container">
+                            <img src="img/phase.jpg" />
+                        </div>
+                    </a>
+                    <p>Real-time multiplayer game inside the browser.</p>
+                    <div class="tech">
+                        <span class="tech-item">HTML5 Canvas</span>
+                        <span class="tech-item">Node.js</span>
+                        <span class="tech-item">WebSockets</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="/showcase/tictacgo">
+                        <h2 class="project-title">TicTacGo</h2>
+                        <div class="img-container">
+                            <img src="/img/tictacgo.jpg" />
+                        </div>
+                    </a>
+                    <p>Ultimate Tic Tac Toe, a much more complex version of the original game.</p>
+                    <div class="tech">
+                        <span class="tech-item">HTML</span>
+                        <span class="tech-item">CSS</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">AI</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="https://play.google.com/store/apps/details?id=com.ad.truthtable">
+                        <h2 class="project-title">TruTabGen App</h2>
+                        <div class="img-container">
+                            <img src="/img/trutabgen-app.jpg" />
+                        </div>
+                    </a>
+                    <p>Android and IOS app version of the TruTabGen website.</p>
+                    <div class="tech">
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">React Native</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="https://airbook.dragos-george.com">
+                        <h2 class="project-title">AirBook</h2>
+                        <div class="img-container">
+                            <img src="/img/airbook.jpg" />
+                        </div>
+                    </a>
+                    <p>Online hotel booking website.</p>
+                    <div class="tech">
+                        <span class="tech-item">AngularJs</span>
+                        <span class="tech-item">3rd party APIs</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <a href="/showcase/smarthouse">
+                        <h2 class="project-title">Smart House</h2>
+                        <div class="img-container">
+                            <img src="/img/smarthouse.jpg" />
+                        </div>
+                    </a>
+                    <p>Interactive view with day/night, rain, house lights and temperature control.</p>
+                    <div class="tech">
+                        <span class="tech-item">AngularJs</span>
+                        <span class="tech-item">Geolocation & Weather</span>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card">
-                <a href="/showcase/phase">
-                    <h2 class="project-title">Phase Universe</h2>
-                    <div class="img-container">
-                        <img src="img/phase.jpg" />
+        <!-------------------------- SKILLS -------------------------->
+        <section id="skills">
+            <h1 class="section-title">SKILLS</h1>
+            <div class="container">
+                <div class="skill">
+                    <div class="skill-title">
+                        <img src="/img/puzzle.svg" />
+                        <h3 class="skill-name">Problem <br>Solving</h3>
                     </div>
-                </a>
-                <p>Real-time multiplayer game inside the browser.</p>
-                <div class="tech">
-                    <span class="tech-item">HTML5 Canvas</span>
-                    <span class="tech-item">Node.js</span>
-                    <span class="tech-item">WebSockets</span>
+                    <ul class="skill-content">
+                        <li>
+                            <a href="https://www.hackerrank.com/dragos99">
+                                HackerRank Profile
+                                <img src="img/link.svg" width="15px" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://leetcode.com/dragos99/">
+                                LeetCode Profile
+                                <img src="img/link.svg" width="15px" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <img class="separator" src="/img/line.svg"></img>
+                <div class="skill">
+                    <div class="skill-title">
+                        <img src="/img/graph.svg" />
+                        <h3 class="skill-name">Algorithms & <br>Data Structures</h3>
+                    </div>
+                    <ul class="skill-content">
+                        <li>Sorting & Searching</li>
+                        <li>Graphs, Trees, Shortest paths</li>
+                        <li>Dynamic programming</li>
+                    </ul>
+                </div>
+                <img class="separator" src="/img/line.svg"></img>
+                <div class="skill">
+                    <div class="skill-title">
+                        <img src="/img/web-dev.svg" />
+                        <h3 class="skill-name">Full Stack <br>Development</h3>
+                    </div>
+                    <ul class="skill-content">
+                        <li>HTML, CSS, React</li>
+                        <li>Node.js, Express.js</li>
+                        <li>SQL & NoSQL databases</li>
+                    </ul>
+                </div>
+                <img class="separator" src="/img/line.svg"></img>
+                <div class="skill">
+                    <div class="skill-title">
+                        <img src="/img/mobile-dev.svg" />
+                        <h3 class="skill-name">Mobile <br>Development</h3>
+                    </div>
+                    <ul class="skill-content">
+                        <li>React Native</li>
+                    </ul>
                 </div>
             </div>
+        </section>
 
-            <div class="project-card">
-                <a href="/showcase/tictacgo">
-                    <h2 class="project-title">TicTacGo</h2>
-                    <div class="img-container">
-                        <img src="img/tictacgo.jpg" />
-                    </div>
-                </a>
-                <p>Ultimate Tic Tac Toe, a much more complex version of the original game.</p>
-                <div class="tech">
-                    <span class="tech-item">HTML</span>
-                    <span class="tech-item">CSS</span>
-                    <span class="tech-item">JavaScript</span>
-                    <span class="tech-item">AI</span>
-                </div>
+        <section id="resume">
+            <h1 class="section-title">Résumé</h1>
+            <div class="container">
+                <object data="/CV_Dragos-George_Feleaga.pdf" type="application/pdf" width="100%" height="1200px">
+                    <a href="/CV_Dragos-George_Feleaga.pdf"><h3>Your browser doesn't support PDFs. Click to download file.</h3></a>
+                </object>
             </div>
-
-            <div class="project-card">
-                <a href="https://play.google.com/store/apps/details?id=com.ad.truthtable">
-                    <h2 class="project-title">TruTabGen App</h2>
-                    <div class="img-container">
-                        <img src="img/trutabgen-app.jpg" />
-                    </div>
-                </a>
-                <p>Android and IOS app version of the TruTabGen website.</p>
-                <div class="tech">
-                    <span class="tech-item">JavaScript</span>
-                    <span class="tech-item">React Native</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <a href="/showcase/smarthouse">
-                    <h2 class="project-title">Smart House</h2>
-                    <div class="img-container">
-                        <img src="img/smarthouse.jpg" />
-                    </div>
-                </a>
-                <p>Interactive view in which you control the sun, the rain, and the inside temperature.</p>
-                <div class="tech">
-                    <span class="tech-item">HTML</span>
-                    <span class="tech-item">AngularJs</span>
-                    <span class="tech-item">3rd party APIs</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <script src="/js/particles.min.js"></script>
     <script src="/js/main.js"></script>
